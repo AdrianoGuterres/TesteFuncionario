@@ -11,12 +11,12 @@ import junitparams.FileParameters;
 import junitparams.JUnitParamsRunner;
 
 @RunWith(JUnitParamsRunner.class)
-public class FuncionariosSalLiqAcresDescTest {
-
+public class FuncionariosCalcSalLiqTest {
+	
 
 
 	@Test
-	@FileParameters("src/test/java/br/pucrs/qualidade/produto/funcionario/resources/baseFuncionariosSalLiqAcresDesc.csv") 
+	@FileParameters("src/test/java/br/pucrs/qualidade/produto/funcionario/resources/baseTestesFuncionariosCalcSalLiq.csv") 
 	public void calculaAdicionaisTest(int  matricula, String nome,int categoria, int numeroDependentes, double salarioBase,
 			double salExpected,	double adicExpected, double descExpected ) throws Exception{	
 		
@@ -36,7 +36,7 @@ public class FuncionariosSalLiqAcresDescTest {
 	}
 	
 	@Test
-	@FileParameters("src/test/java/br/pucrs/qualidade/produto/funcionario/resources/baseFuncionariosSalLiqAcresDesc.csv") 
+	@FileParameters("src/test/java/br/pucrs/qualidade/produto/funcionario/resources/baseTestesFuncionariosCalcSalLiq.csv") 
 	public void calculaDescontosTest(int  matricula, String nome,int categoria, int numeroDependentes, double salarioBase,
 			double salExpected,	double adicExpected, double descExpected ) throws Exception{	
 		

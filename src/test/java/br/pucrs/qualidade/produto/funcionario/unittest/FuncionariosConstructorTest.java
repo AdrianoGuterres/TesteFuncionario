@@ -11,7 +11,7 @@ import junitparams.JUnitParamsRunner;
 
 
 @RunWith(JUnitParamsRunner.class)
-public class FuncionarioConstructorTest {
+public class FuncionariosConstructorTest {
 
 	@Test
 	@FileParameters("src\\test\\java\\br\\pucrs\\qualidade\\produto\\funcionario\\resources\\baseTestesFuncionariosConPass.csv") 
