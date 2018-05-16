@@ -8,30 +8,22 @@ public class Funcionario {
 	private int numeroDependentes;
 	private double salarioBase;
 	
-	public Funcionario(int matricula, String nome, int categoria, int numeroDependentes, double salarioBase) {
-		this.matricula = matricula;
-		this.nome = nome;
-		this.categoria = categoria;
-		this.numeroDependentes = numeroDependentes;
-		this.salarioBase = salarioBase;
-	}
+	public Funcionario(int matricula, String nome, int categoria, int numeroDependentes, double salarioBase) throws Exception {		
+			setMatricula(matricula);
+			setNome(nome);
+			setCategoria(categoria);
+			setNumeroDependentes(numeroDependentes);
+			setSalarioBase(salarioBase);			
+	}	
+	
+	public double getSalarioBase() {
+		return salarioBase;
+	}	
 
 	public int getNumeroDependentes() {
 		return numeroDependentes;
-	}
-
-	public void setNumeroDependentes(int numeroDependentes) {
+	}	
 	
-	}
-
-	public double getSalarioBase() {
-		return salarioBase;
-	}
-
-	public void setSalarioBase(double salarioBase) {
-	
-	}
-
 	public int getMatricula() {
 		return matricula;
 	}
@@ -46,37 +38,77 @@ public class Funcionario {
 	
 	
 	
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setNumeroDependentes(int numeroDependentes) throws Exception {
+		if(numeroDependentes >= 0) {
+			this.numeroDependentes = numeroDependentes;			
+		}else {
+			throw new IllegalArgumentException();
+		}	
+	}	
+
+	public void setMatricula(int matricula) throws Exception{
+		if(matricula > 0 || matricula <= 99999) {
+			this.matricula = matricula;			
+		}else {
+			throw new IllegalArgumentException();
+		}			
+	}
+
+	public void setCategoria(int categoria) throws Exception{
+		if(categoria > 0 || matricula <= 5) {
+			this.categoria = categoria;			
+		}else {
+			throw new IllegalArgumentException();
+		}	
+	}
+
+	public void setSalarioBase(double salarioBase) throws Exception{
+		if(salarioBase > 0 || salarioBase <= 5000) {
+			this.salarioBase = salarioBase;			
+		}else {
+			throw new IllegalArgumentException();
+		}	
+	}	
+	
 
 	public double calculaDescontos() {
 		
+		double inss = 0.1;
+		double irpf = 0;
 		
+		if(getSalarioBase()  > 10000) {
+			irpf = 0.27;			
+		}else if(getSalarioBase() < 10000 && getSalarioBase() > 25000) {
+			irpf = 0.27; 
+		}
 		
-		
-		return 0;
+		return (salarioBase*inss) - (salarioBase*irpf);
        
 	}
+	
 	
 	public double calculaAdicionais() {
 		
 		double resultado = 0;
 		
-		if(categoria == 3) {
-			resultado = salarioBase + (salarioBase * 0.2);		
-		}else if(categoria == 4) {
-			resultado = salarioBase + (salarioBase * 0.05);				
-		}else if(categoria == 5) {
-						
+		if(getCategoria() == 3) {
+			resultado = (getSalarioBase() * 0.2);		
+		}else if(getCategoria() == 4) {
+			resultado = (getSalarioBase() * (0.05*getNumeroDependentes()));				
+		}else if(getCategoria() == 5) {
+			resultado = (getSalarioBase() * ((0.05*getNumeroDependentes())+0.2));									
 		}
 		
 		return resultado;	 
 	}
 	
 	public double calculaSalarioLiquido() {
-		double resultado = 0;
-		
-		resultado = calculaAdicionais() - calculaDescontos();
-		
-	  
+		double resultado = calculaAdicionais() - calculaDescontos();	  
 		return resultado;
 	}
 }
