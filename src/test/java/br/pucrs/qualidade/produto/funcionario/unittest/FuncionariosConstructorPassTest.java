@@ -11,10 +11,10 @@ import junitparams.JUnitParamsRunner;
 
 
 @RunWith(JUnitParamsRunner.class)
-public class FuncionariosConstructorTest {
+public class FuncionariosConstructorPassTest {
 
 	@Test
-	@FileParameters("src\\test\\java\\br\\pucrs\\qualidade\\produto\\funcionario\\resources\\baseTestesFuncionariosConPass.csv") 
+	@FileParameters("src/test/java/br/pucrs/qualidade/produto/funcionario/resources/baseTestesFuncionariosConPass.csv") 
 	public void constructorTest(int  matriculaActual, String nomeActual, int categoriaActual, int no_dependentesActual, double salarioBaseActual) throws Exception{	
 		
 		Funcionario fun = new Funcionario(matriculaActual, nomeActual, categoriaActual, no_dependentesActual, salarioBaseActual);		

@@ -4,16 +4,19 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import br.pucrs.qualidade.produto.funcionario.unittest.FuncionariosCalcSalLiqTest;
-import br.pucrs.qualidade.produto.funcionario.unittest.FuncionariosConstructorTest;
-import br.pucrs.qualidade.produto.funcionario.unittest.FuncionariosSetsPassTest;
+import br.pucrs.qualidade.produto.funcionario.unittest.*;
 
 @RunWith(Suite.class)
 @SuiteClasses({
 	FuncionariosSetsPassTest.class,
-	FuncionariosConstructorTest.class,
-	FuncionariosCalcSalLiqTest.class	
+	FuncionariosSetsFailTest.class,	
+	
+	FuncionariosConstructorPassTest.class,
+	FuncionariosConstructorFailTest.class,	
+	
+	FuncionariosCalcSalLiqPassTest.class
+	
 })
 public class FuncionarioAllTests {
-
+	
 }

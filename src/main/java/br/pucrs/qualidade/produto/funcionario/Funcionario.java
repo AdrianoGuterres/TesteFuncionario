@@ -39,39 +39,42 @@ public class Funcionario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
 
 	public void setNumeroDependentes(int numeroDependentes) throws IllegalArgumentException{
-		if(numeroDependentes >= 0) {
-			this.numeroDependentes = numeroDependentes;			
+		if(numeroDependentes < 0) {
+			throw new IllegalArgumentException();		
 		}else {
-			throw new IllegalArgumentException();
+			this.numeroDependentes = numeroDependentes;				
 		}	
 	}	
 
 	public void setMatricula(int matricula) throws IllegalArgumentException{
-		if(matricula >= 10000 && getMatricula() <= 99999) {
-			this.matricula = matricula;			
-		}else {
+		if(matricula > 99999) {
+			throw new IllegalArgumentException();		
+		}else if(matricula<10000) {
 			throw new IllegalArgumentException();
+		}else {
+			this.matricula = matricula;
 		}			
 	}
 
 	public void setCategoria(int categoria) throws IllegalArgumentException{
-		if(categoria > 0 && categoria < 6) {
-			this.categoria = categoria;			
-		}else {
+		if(categoria > 5) {
+			throw new IllegalArgumentException();		
+		}else if(categoria <1) {
 			throw new IllegalArgumentException();
+		}else {
+			this.categoria = categoria;
 		}	
 	}
 
 	
-	
-	
 	public void setSalarioBase(double salarioBase) throws IllegalArgumentException{
-		if(salarioBase > 0 ) {
-			this.salarioBase = salarioBase;			
+		if(salarioBase < 1 ) {
+			throw new IllegalArgumentException();					
 		}else {
-			throw new IllegalArgumentException();
+			this.salarioBase = salarioBase;	
 		}	
 	}	
 
@@ -80,17 +83,16 @@ public class Funcionario {
 
 
 		double desconto = 0;
-
-		if(getSalarioBase()<2500) {
-			desconto = 0.1;
-		}else if(getSalarioBase()>= 2500 && getSalarioBase()<=10000) {
-			desconto = 0.2;
-		}else if(getSalarioBase() > 10000) {
+		
+		
+		if(getSalarioBase() > 10000) {
 			desconto = 0.37;
+		} else if(getSalarioBase() >= 2500) {
+			desconto = 0.2;
+		} else {
+			desconto = 0.1;
 		}
-
-		System.out.println(desconto*getSalarioBase());
-
+				
 		return desconto*getSalarioBase();
 
 	}
@@ -105,10 +107,10 @@ public class Funcionario {
 			resultado = getSalarioBase()*0.2;
 			break;
 		case 4:
-			resultado = (getNumeroDependentes()*0.05) +getSalarioBase();
+			resultado = (getNumeroDependentes()*0.05) * getSalarioBase();
 			break;
 		case 5:
-			resultado = (getNumeroDependentes()*0.05 + getSalarioBase() * 0.2) +getSalarioBase();
+			resultado = (getNumeroDependentes()*0.05) + (getSalarioBase() * 0.2);
 			break;
 
 		default:
@@ -117,13 +119,11 @@ public class Funcionario {
 		}
 
 
-
-
 		return resultado;	 
 	}
 
 	public double calculaSalarioLiquido() {
-		double resultado = calculaAdicionais() - calculaDescontos();	  
+		double resultado = (getSalarioBase() +calculaAdicionais()) - calculaDescontos();	  
 		return resultado;
 	}
 }

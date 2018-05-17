@@ -25,15 +25,9 @@ public class FuncionariosSetsPassTest {
 	@FileParameters("src/test/java/br/pucrs/qualidade/produto/funcionario/resources/baseTestesFuncionariosSetsPass.csv") 
 	public void setMatricula(int  matricula, int categoria, int numeroDependentes, double salarioBase, int matriculaExpected, int categoriaExpected, int nroExpected, double salarioExpected ) throws Exception{	
 
-		fun.setMatricula(matricula);
-		
+		fun.setMatricula(matricula);		
 		int actual = fun.getMatricula();
-		
-		System.out.println(matriculaExpected + "   "+ actual);
-		
 		assertEquals(matriculaExpected, actual);
-
-
 	}
 	
 	@Test
@@ -43,12 +37,7 @@ public class FuncionariosSetsPassTest {
 		fun.setCategoria(categoriaExpected);
 		
 		int actual = fun.getCategoria();
-		
-		System.out.println(categoriaExpected + "   "+ actual);
-		
 		assertEquals(categoriaExpected, actual);
-
-
 	}
 	
 	@Test
@@ -58,12 +47,7 @@ public class FuncionariosSetsPassTest {
 		fun.setNumeroDependentes(numeroDependentes);
 		
 		int actual = fun.getNumeroDependentes();
-		
-		System.out.println(nroExpected + "   "+ actual);
-		
 		assertEquals(nroExpected, actual);
-
-
 	}
 	
 	@Test
@@ -72,13 +56,8 @@ public class FuncionariosSetsPassTest {
 
 		fun.setSalarioBase(salarioBase);
 				
-		double actual = fun.getSalarioBase();
-		
-		System.out.println(salarioExpected + "   "+ actual);
-		
+		double actual = fun.getSalarioBase();		
 		assertEquals(salarioExpected, actual,0001);
-
-
 	}
 
 }
